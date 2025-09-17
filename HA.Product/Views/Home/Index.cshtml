@@ -1,0 +1,39 @@
+﻿@model List<HA.Product.Models.Item>
+
+@{
+    ViewBag.Title = "Trang chủ";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Sản phẩm mới nhất</h2>
+
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@item.urlImage" class="card-img-top" alt="@item.Name"
+                             style="height:200px; object-fit:scale-down;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text text-truncate">@item.Description</p>
+                            <p class="fw-bold text-danger">@item.Price.ToString("N0") VNĐ</p>
+                            <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.ID"
+                               class="btn btn-outline-primary w-100">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    Hiện chưa có sản phẩm nào.
+                </div>
+            </div>
+        }
+    </div>
+</div>

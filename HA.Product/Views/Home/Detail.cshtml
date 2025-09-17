@@ -1,0 +1,28 @@
+﻿@model HA.Product.Models.Item
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <img src="@Model.urlImage" class="img-fluid rounded-start"
+                     alt="@Model.Name" style="object-fit:cover; width:100%; height:100%;" />
+            </div>
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Name</h3>
+                    <p class="card-text">@Model.Description</p>
+                    <h4 class="fw-bold text-danger">@Model.Price.ToString("N0") VNĐ</h4>
+
+                    <div class="mt-4 d-flex justify-content-between">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

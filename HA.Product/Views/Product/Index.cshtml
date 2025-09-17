@@ -1,0 +1,44 @@
+﻿@model List<HA.Product.Models.Item>
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Danh sách sản phẩm</h2>
+
+    <div class="mb-3 text-end">
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Thêm sản phẩm
+        </a>
+    </div>
+
+    <table class="table table-bordered table-hover table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Hình ảnh</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Mô tả</th>
+                <th scope="col">Giá</th>
+                <th scope="col" class="text-center">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.urlImage" alt="@item.Name" style="width:80px; height:80px; object-fit:cover;" />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td class="fw-bold text-danger">@item.Price.ToString("N0") VNĐ</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
